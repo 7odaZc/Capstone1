@@ -1,0 +1,71 @@
+import Link from "next/link";
+import ProjectCard from "../components/ProjectCard";
+import { projects } from "../lib/projects";
+
+export default function HomePage() {
+  return (
+    <main className="mx-auto w-[min(1100px,calc(100%-32px))]">
+      <section className="py-24 md:py-32">
+        <p className="text-xs font-bold tracking-[.16em] text-[#7785FF]">
+          COMPUTER SCIENCE · SOFTWARE DEVELOPMENT
+        </p>
+        <h1 className="mt-5 max-w-4xl text-5xl font-bold leading-[.95] tracking-[-.05em] md:text-7xl">
+          I build software,{" "}
+          <span className="text-[#7785FF]">then I debug it.</span>
+        </h1>
+        <p className="mt-7 max-w-2xl text-lg leading-8 text-[#9EACC0]">
+          I’m Mahmoud, a Computer Science student interested in software development,
+          testing, AI, and interactive projects.
+        </p>
+        <div className="mt-8 flex flex-wrap gap-3">
+          <Link href="/work" className="rounded-xl bg-[#7785FF] px-5 py-3 font-bold">
+            View my work
+          </Link>
+          <Link href="/contact" className="rounded-xl border border-white/10 px-5 py-3 font-bold">
+            Contact me
+          </Link>
+        </div>
+      </section>
+
+      <section className="pb-20">
+        <p className="text-xs font-bold tracking-[.14em] text-[#7785FF]">SELECTED WORK</p>
+        <h2 className="mt-3 text-4xl font-bold tracking-tight">Things I’ve built.</h2>
+        <div className="mt-8 grid gap-5 md:grid-cols-2">
+          <ProjectCard project={projects[0]} featured />
+          <ProjectCard project={projects[1]} />
+          <ProjectCard project={projects[2]} />
+        </div>
+      </section>
+
+      <section className="border-t border-white/10 py-20">
+        <p className="text-xs font-bold tracking-[.14em] text-[#7785FF]">HOW I WORK</p>
+        <div className="mt-7 grid gap-6 md:grid-cols-3">
+          {[
+            ["01", "Understand", "Break the problem down before coding."],
+            ["02", "Build", "Create the smallest working version."],
+            ["03", "Debug", "Test, investigate, fix, and improve."]
+          ].map(([n, title, text]) => (
+            <div key={n} className="rounded-2xl border border-white/10 p-6">
+              <span className="text-[#7785FF]">{n}</span>
+              <h3 className="mt-8 text-xl font-bold">{title}</h3>
+              <p className="mt-2 leading-7 text-[#9EACC0]">{text}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="pb-24 pt-4">
+        <div className="rounded-3xl border border-white/10 bg-[#101B2E] p-7 md:p-10">
+          <p className="text-xs font-bold tracking-[.14em] text-[#7785FF]">LET’S TALK</p>
+          <h2 className="mt-3 text-3xl font-bold">Have a project, opportunity, or question?</h2>
+          <p className="mt-3 max-w-2xl leading-7 text-[#9EACC0]">
+            Send me a message and I’ll get back to you.
+          </p>
+          <Link href="/contact" className="mt-6 inline-block font-bold text-[#AAB2FF]">
+            Contact me →
+          </Link>
+        </div>
+      </section>
+    </main>
+  );
+}
